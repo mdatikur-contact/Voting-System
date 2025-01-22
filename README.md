@@ -1,4 +1,4 @@
-readme_content = """
+
 # Poll Management System
 
 A dynamic poll management system built using **Node.js**, **Express**, **MongoDB**, and **EJS**. The application allows users to create polls, vote on them, and view poll results dynamically.
