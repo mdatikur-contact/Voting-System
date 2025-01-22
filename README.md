@@ -54,7 +54,7 @@ Project Structure
 perl
 Always show details
 
-Copy
+
 poll-management-system/
 ├── public/                # Public assets (if any)
 ├── views/                 # EJS templates
