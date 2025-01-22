@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Put Your Opinion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-center">
+            <div class="w-full max-w-md my-10">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h5 class="text-xl font-semibold mb-4">Title: <%= poll.title %>
+                    </h5>
+                    <p>Description: <%= poll.description %>
+                    </p>
+                    <div class="my-3">
+                        <h5>Result</h5>
+                        <ul class="list-group">
+                            <% for (let r of result ) {%>
+                                <li class="p-4 bg-gray-50 rounded-lg shadow hover:bg-gray-100">
+                                    <p>
+                                        <%= r.name %> ---> <strong>
+                                                <%= r.percentage.toFixed(2) %>
+                                            </strong>
+                                    </p>
+                                </li>
+                                <%} %>
+                        </ul>
+
+                    </div>
+                    <div class="my-4">
+                        <h5> What is your opinion</h5>
+                        <form action="/polls/<%= poll._id %>" method="POST">
+                            <% for (let option of poll.options ) {%>
+                                <div class="">
+
+                                    <input type="radio" name="option" id="<%= option._id %>" value="<%= option._id %>"
+                                        class="mr-2">
+                                    <label for="<%= option._id %>" class="text-gray-700 font-medium">
+                                        <%= option.name %>
+                                    </label>
+
+
+                                </div>
+                                <%} %>
+                                    <input type="submit" value="Submit your opinion"
+                                        class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

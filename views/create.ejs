@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Create Poll</title>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto p-5">
+        <div class="max-w-lg mx-auto">
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h4 class="text-2xl font-bold mb-4">Create a new poll</h4>
+                <form action="/create" method="POST">
+                    <div class="mb-4">
+                        <label for="title" class="block text-gray-700 font-medium">Enter Title</label>
+                        <input type="text" name="title" id="title"
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="description" class="block text-gray-700 font-medium">Enter Description</label>
+                        <textarea name="description" id="description"
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <div id="options">
+                        <p class="text-gray-700 font-medium mb-2">Enter your options</p>
+                        <div class="mb-4">
+                            <input type="text" name="options"
+                                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Option 1" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="text" name="options"
+                                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Option 2" required>
+                        </div>
+                        <button type="button"
+                            class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                            id="addOption">
+                            Add More Option
+                        </button>
+                    </div>
+                    <input type="submit"
+                        class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        value="Create Poll">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add More Option Functionality
+        let optionCount = 3;
+        document.getElementById('addOption').addEventListener('click', function (event) {
+            event.preventDefault();
+            const optionsContainer = document.getElementById('options');
+
+
+            // Create a new input field for additional options
+            const newOption = document.createElement('div');
+            newOption.classList.add('mb-4');
+            newOption.innerHTML = `
+                <input type="text" 
+                name="options" 
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                placeholder="options ${optionCount}" required>
+            `;
+
+            optionsContainer.insertBefore(newOption, optionsContainer.lastElementChild);
+            optionCount++;
+        });
+    </script>
+</body>
+
+</html>
